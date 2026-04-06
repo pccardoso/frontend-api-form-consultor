@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  vue-frontend:
+    image: vue_frontend
+    build: .
+
+    networks:
+      - network_swarm_public
+
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=network_swarm_public"
+        - "traefik.http.routers.front.rule=Host(`autoanalytics.mundoevogard.com`)"
+        - "traefik.http.routers.front.priority=1"
+        - "traefik.http.routers.front.entrypoints=websecure"
+        - "traefik.http.routers.front.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.front.loadbalancer.server.port=80"
+
+networks:
+  network_swarm_public:
+    external: true
