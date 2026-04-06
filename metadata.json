@@ -1,0 +1,5 @@
+{
+  "name": "SGA Dashboard",
+  "description": "Painel administrativo para gestão de formulários de pesquisa SGA com exportação para Excel e PDF.",
+  "requestFramePermissions": []
+}
